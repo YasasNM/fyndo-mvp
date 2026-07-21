@@ -7,6 +7,10 @@ export const metadata = {
     "Sri Lanka's video-first local discovery platform. Hidden food gems, real prices, real videos.",
 };
 
+export const viewport = {
+  themeColor: "#0D0B08",
+};
+
 function PlayPin() {
   return (
     <svg className="pin" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +20,7 @@ function PlayPin() {
       />
       <path
         d="M100 72 L162 108 A6 6 0 0 1 162 118 L100 154 A6 6 0 0 1 91 148 L91 78 A6 6 0 0 1 100 72 Z"
-        fill="#FFFFFF"
+        fill="#0D0B08"
       />
     </svg>
   );
@@ -29,7 +33,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -44,12 +48,13 @@ export default function RootLayout({ children }) {
             </Link>
             <span className="header-badge">
               <span className="dot" aria-hidden="true"></span>
-              Colombo · beta
+              Colombo · Beta
             </span>
           </div>
         </header>
         {children}
         <footer className="site-footer">
+          <span className="footer-wordmark" aria-hidden="true">fyndo</span>
           <div className="container">
             <span className="footer-brand">
               <PlayPin />
@@ -63,7 +68,7 @@ export default function RootLayout({ children }) {
               <Link href="/">All spots</Link>
             </nav>
             <span className="footer-note">
-              Fyndo — find the real spots. Built in Sri Lanka 🇱🇰 App coming soon.
+              Fyndo — find the real spots. Built in Sri Lanka. App coming soon.
             </span>
           </div>
         </footer>

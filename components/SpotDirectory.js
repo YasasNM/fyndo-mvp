@@ -46,7 +46,7 @@ export default function SpotDirectory({ spots }) {
   };
 
   return (
-    <section className="container" id="spots">
+    <section className="container directory" id="spots">
       <div className="search-wrap">
         <div className="search-box">
           <span className="search-icon">
@@ -103,11 +103,12 @@ export default function SpotDirectory({ spots }) {
         </div>
       ) : (
         <div className="grid">
-          {filtered.map((s) => {
+          {filtered.map((s, i) => {
             const theme = categoryTheme(s.category);
             return (
               <Link href={`/spot/${s.id}`} key={s.id} className="card">
                 <div className={`card-media ${theme.mediaClass}`}>
+                  <span className="card-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                   <span className="area-badge">📍 {s.area}</span>
                   <span className="food-emoji" aria-hidden="true">{theme.emoji}</span>
                   <div className="play">

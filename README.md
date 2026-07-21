@@ -27,6 +27,10 @@ browser automatically. Stop it with Ctrl+C.
 | `app/page.js` | Home page (hero + search) |
 | `components/SpotDirectory.js` | The search bar, filters, and card grid |
 | `components/categoryTheme.js` | Emoji + card color for each category (edit when adding categories) |
+| `components/Reviews.js` | Review list + "leave a review" form on spot pages |
+| `lib/supabase.js` | Connection to the reviews database |
+| `supabase-setup.sql` | One-time database setup script (see Part 5) |
+| `.env.local.example` | Template for your database keys (see Part 5) |
 | `app/spot/[id]/page.js` | The individual business profile page |
 | `app/layout.js` | Header, footer, logo, fonts |
 | `app/globals.css` | All colors and styling (brand palette at the top) |
@@ -57,6 +61,31 @@ top) — add new categories there when needed.
 Every time you push a change to GitHub, Vercel redeploys automatically.
 When you buy your domain later, you attach it in Vercel → Settings →
 Domains, and the same site answers at fyndo.app (or whatever you buy).
+
+## Part 5 — Turn on reviews (Supabase, free, ~15 min)
+
+The review system is already built into the site — it just needs a free
+database to store the reviews. Until you do this, spot pages show
+"Reviews are almost ready" instead of the form.
+
+1. Create a free account at **supabase.com** → New project (any name,
+   pick a strong database password and save it somewhere)
+2. In your project, open **SQL Editor**, paste the entire contents of
+   `supabase-setup.sql` (in this folder), and click **Run**
+3. Go to **Settings → API** and copy two values:
+   - Project URL
+   - `anon` `public` key
+4. In this folder, copy `.env.local.example` to a new file called
+   `.env.local` and paste those two values in
+5. Restart `npm run dev` — the review form now appears on every spot page
+6. For the live site: Vercel → your project → **Settings → Environment
+   Variables** → add the same two variables → Redeploy
+
+**Moderating reviews:** new reviews are hidden until you approve them.
+In Supabase, open **Table Editor → reviews**, and tick the `approved`
+box on any review you want to publish. Delete spam rows right there.
+Nobody can edit or delete reviews through the website — only you, from
+this dashboard.
 
 ## What's deliberately NOT here yet
 

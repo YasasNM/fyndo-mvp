@@ -2,6 +2,7 @@ import spots from "../../../data/spots.json";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { categoryTheme } from "../../../components/categoryTheme";
+import Reviews from "../../../components/Reviews";
 
 export function generateStaticParams() {
   return spots.map((s) => ({ id: s.id }));
@@ -105,6 +106,8 @@ export default async function SpotPage({ params }) {
             <span className="value">{spot.category}</span>
           </div>
         </div>
+
+        <Reviews spotId={spot.id} />
 
         <div className="btn-row">
           <a className="btn btn-primary" href={mapsUrl} target="_blank" rel="noreferrer">
